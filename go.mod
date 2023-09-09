@@ -1,6 +1,6 @@
 module git.fasibio.de/vault/terraform-provider-vault
 
-go 1.19
+go 1.20
 
 require (
 	github.com/fasibio/vaultapi v0.0.1
