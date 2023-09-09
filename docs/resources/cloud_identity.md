@@ -61,7 +61,7 @@ resource "vault_cloud_identity" "value1-reader" {
 
 Required:
 
-- `right_value_pattern` (String) Path to right point seperated. 
+- `right_value_pattern` (String) Path to right point separated. 
 						
 Have to match /^\((?P<directions>(r|w|d)+)\)(?P<target>(VALUES|IDENTITY|SYSTEM))(?P<pattern>(\.[a-z0-9_\->\*]+)+)$/
 

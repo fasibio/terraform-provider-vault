@@ -120,7 +120,7 @@ func (r *IdentityResource) Schema(ctx context.Context, req resource.SchemaReques
 						"right_value_pattern": schema.StringAttribute{
 							Required: true,
 							MarkdownDescription: fmt.Sprintf(`
-Path to right point seperated. 
+Path to right point separated. 
 						
 Have to match /%s/
 
@@ -208,7 +208,7 @@ func (r *IdentityResource) Create(ctx context.Context, req resource.CreateReques
 		return
 	}
 
-	pAPI, _, _, err := getProtectedApi(r.client, data.CreatorKey, data.VaultID)
+	pAPI, err := getProtectedApi(r.client, data.CreatorKey, data.VaultID)
 	if err != nil {
 		resp.Diagnostics.AddError("Error by creating the API", err.Error())
 		return
@@ -273,14 +273,14 @@ func getRightInputs(rights []RightsResourceModel) ([]*client.RightInput, error) 
 	for _, v := range rights {
 		tmp, err := client.GetRightDescriptionByString(v.RightValuePattern.ValueString())
 		if err != nil {
-			errors.Join(errs, fmt.Errorf("error by right %s :%s", v.RightValuePattern.ValueString(), err.Error()))
+			errs = errors.Join(errs, fmt.Errorf("error by right %s :%s", v.RightValuePattern.ValueString(), err.Error()))
 			continue
 		}
 		for _, tmpV := range tmp {
 			rightInputs = append(rightInputs, &client.RightInput{
-				Target:            client.RightTarget(tmpV.Target),
-				Right:             client.Directions(tmpV.Right),
-				RightValuePattern: string(tmpV.RightValue),
+				Target:            tmpV.Target,
+				Right:             tmpV.Right,
+				RightValuePattern: tmpV.RightValue,
 			})
 		}
 	}
@@ -296,7 +296,7 @@ func (r *IdentityResource) Read(ctx context.Context, req resource.ReadRequest, r
 	if resp.Diagnostics.HasError() {
 		return
 	}
-	pApi, _, _, err := getProtectedApi(r.client, data.CreatorKey, data.VaultID)
+	pApi, err := getProtectedApi(r.client, data.CreatorKey, data.VaultID)
 	if err != nil {
 		resp.Diagnostics.AddError("Unable to build protected Api", err.Error())
 		return
@@ -339,7 +339,7 @@ func (r *IdentityResource) Update(ctx context.Context, req resource.UpdateReques
 		return
 	}
 
-	pApi, _, _, err := getProtectedApi(r.client, data.CreatorKey, data.VaultID)
+	pApi, err := getProtectedApi(r.client, data.CreatorKey, data.VaultID)
 	if err != nil {
 		resp.Diagnostics.AddError("Unable to build protected Api", err.Error())
 		return
@@ -398,7 +398,7 @@ func (r *IdentityResource) Delete(ctx context.Context, req resource.DeleteReques
 		data.Id = types.StringValue(id)
 	}
 
-	pApi, _, _, err := getProtectedApi(r.client, data.CreatorKey, data.VaultID)
+	pApi, err := getProtectedApi(r.client, data.CreatorKey, data.VaultID)
 	if err != nil {
 		resp.Diagnostics.AddError("Unable to build protected Api", err.Error())
 		return

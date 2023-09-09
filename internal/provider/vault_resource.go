@@ -178,7 +178,7 @@ func (r *VaultResource) Create(ctx context.Context, req resource.CreateRequest, 
 		return
 	}
 	data.Operator_PrivateKey = types.StringValue(privKey)
-	pApi, _, _, err := getProtectedApi(r.client, data.Operator_PrivateKey, data.Id)
+	pApi, err := getProtectedApi(r.client, data.Operator_PrivateKey, data.Id)
 	if err != nil {
 		resp.Diagnostics.AddError("Unable to build protected Api", err.Error())
 		return
@@ -207,7 +207,7 @@ func (r *VaultResource) Read(ctx context.Context, req resource.ReadRequest, resp
 	if resp.Diagnostics.HasError() {
 		return
 	}
-	pApi, _, _, err := getProtectedApi(r.client, data.Operator_PrivateKey, data.Id)
+	pApi, err := getProtectedApi(r.client, data.Operator_PrivateKey, data.Id)
 	if err != nil {
 		resp.Diagnostics.AddError("Unable to build protected Api", err.Error())
 		return
@@ -243,7 +243,7 @@ func (r *VaultResource) Update(ctx context.Context, req resource.UpdateRequest, 
 		return
 	}
 
-	pApi, _, _, err := getProtectedApi(r.client, data.Operator_PrivateKey, data.Id)
+	pApi, err := getProtectedApi(r.client, data.Operator_PrivateKey, data.Id)
 	if err != nil {
 		resp.Diagnostics.AddError("Unable to build protected Api", err.Error())
 		return
@@ -272,7 +272,7 @@ func (r *VaultResource) Delete(ctx context.Context, req resource.DeleteRequest, 
 	if resp.Diagnostics.HasError() {
 		return
 	}
-	pApi, _, _, err := getProtectedApi(r.client, data.Operator_PrivateKey, data.Id)
+	pApi, err := getProtectedApi(r.client, data.Operator_PrivateKey, data.Id)
 	if err != nil {
 		resp.Diagnostics.AddError("Unable to build protected Api", err.Error())
 		return

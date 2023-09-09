@@ -107,7 +107,7 @@ func (d *ValueDataSource) Read(ctx context.Context, req datasource.ReadRequest, 
 		return
 	}
 
-	pApi, _, _, err := getProtectedApi(d.client, data.CreatorKey, data.VaultID)
+	pApi, err := getProtectedApi(d.client, data.CreatorKey, data.VaultID)
 	if err != nil {
 		resp.Diagnostics.AddError("Error building connection API", err.Error())
 		return

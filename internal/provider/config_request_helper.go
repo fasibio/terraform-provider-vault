@@ -1,7 +1,6 @@
 package provider
 
 import (
-	"crypto/ecdsa"
 	"errors"
 
 	client "github.com/fasibio/vaultapi"
@@ -27,17 +26,17 @@ func getClient(req *datasource.ConfigureRequest) (*client.Api, error) {
 	return client, nil
 }
 
-func getProtectedApi(api *client.Api, privateKey basetypes.StringValue, vaultID basetypes.StringValue) (*client.ProtectedApi, string, *ecdsa.PrivateKey, error) {
+func getProtectedApi(api *client.Api, privateKey basetypes.StringValue, vaultID basetypes.StringValue) (*client.ProtectedApi, error) {
 	if privateKey.IsNull() {
-		return nil, "", nil, errors.New("private not allowed to be null")
+		return nil, errors.New("private not allowed to be null")
 	}
 	private_key, err := helper.GetPrivateKeyFromB64String(privateKey.ValueString())
 	if err != nil {
-		return nil, "", nil, errors.Join(errors.New("private key is not an ecdsa.Private key"), err)
+		return nil, errors.Join(errors.New("private key is not an ecdsa.Private key"), err)
 	}
 	if vaultID.IsNull() {
-		return nil, "", nil, errors.New("vaultid not allowed to be null")
+		return nil, errors.New("vaultid not allowed to be null")
 	}
 	vault_id := vaultID.ValueString()
-	return api.GetProtectedApi(private_key, vault_id), vault_id, private_key, nil
+	return api.GetProtectedApi(private_key, vault_id), nil
 }

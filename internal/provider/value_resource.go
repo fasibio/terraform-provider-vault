@@ -28,10 +28,6 @@ var valueTypeStrRegex string
 func init() {
 
 	d := []string{"String", "JSON"}
-	for i, v := range d {
-		d[i] = string(v)
-	}
-
 	valueTypeStrRegex = fmt.Sprintf("^(%s)$", strings.Join(d, "|"))
 	valueTypeRegex = regexp.MustCompile(valueTypeStrRegex)
 }
@@ -158,7 +154,7 @@ func (r *ValueResource) Create(ctx context.Context, req resource.CreateRequest, 
 		return
 	}
 
-	pApi, _, _, err := getProtectedApi(r.client, data.CreatorKey, data.VaultID)
+	pApi, err := getProtectedApi(r.client, data.CreatorKey, data.VaultID)
 	if err != nil {
 		resp.Diagnostics.AddError("error creating protectedAPI", err.Error())
 		return
@@ -186,7 +182,7 @@ func (r *ValueResource) Read(ctx context.Context, req resource.ReadRequest, resp
 	if resp.Diagnostics.HasError() {
 		return
 	}
-	pApi, _, _, err := getProtectedApi(r.client, data.CreatorKey, data.VaultID)
+	pApi, err := getProtectedApi(r.client, data.CreatorKey, data.VaultID)
 	if err != nil {
 		resp.Diagnostics.AddError("Unable to build protected Api", err.Error())
 		return
@@ -217,7 +213,7 @@ func (r *ValueResource) Update(ctx context.Context, req resource.UpdateRequest, 
 		return
 	}
 
-	pApi, _, _, err := getProtectedApi(r.client, data.CreatorKey, data.VaultID)
+	pApi, err := getProtectedApi(r.client, data.CreatorKey, data.VaultID)
 	if err != nil {
 		resp.Diagnostics.AddError("Unable to build protected Api", err.Error())
 		return
@@ -244,7 +240,7 @@ func (r *ValueResource) Delete(ctx context.Context, req resource.DeleteRequest, 
 	if resp.Diagnostics.HasError() {
 		return
 	}
-	pApi, _, _, err := getProtectedApi(r.client, data.CreatorKey, data.VaultID)
+	pApi, err := getProtectedApi(r.client, data.CreatorKey, data.VaultID)
 	if err != nil {
 		resp.Diagnostics.AddError("Unable to build protected Api", err.Error())
 		return
