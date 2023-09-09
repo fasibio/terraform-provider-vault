@@ -1,0 +1,24 @@
+vars: 
+  a: b
+  b: c
+---
+
+terraform:_changedir:
+  script: 
+    {{$isInFolder := hasSuffix "/vault/terraform-provider-vault" .Env.PWD}}
+    {{if not $isInFolder }} 
+    - cd terraform-provider-vault
+    {{end}}
+
+terraform:dev: 
+  doc: install terraform module locally for testing
+  script: 
+    {{include "terraform:_changedir"}}
+    - go install .
+
+terraform:tidy: 
+  doc: run go mod tidy for terraform project
+  stage: tidy
+  script: 
+    {{include "terraform:_changedir"}}
+    - go install .
