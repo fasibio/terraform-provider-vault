@@ -21,4 +21,4 @@ terraform:tidy:
   stage: tidy
   script: 
     {{include "terraform:_changedir"}}
-    - go install .
+    - go mod tidy
