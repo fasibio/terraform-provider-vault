@@ -7,7 +7,7 @@ import (
 	"context"
 	"net/http"
 
-	client "github.com/fasibio/vaultapi"
+	client "github.com/cryptvault-cloud/api"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/provider"
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"

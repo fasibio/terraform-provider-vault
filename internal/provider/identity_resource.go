@@ -10,9 +10,8 @@ import (
 	"regexp"
 	"time"
 
-	client "github.com/fasibio/vaultapi"
-	"github.com/fasibio/vaulthelper"
-	"github.com/fasibio/vaulthelper/helper"
+	client "github.com/cryptvault-cloud/api"
+	"github.com/cryptvault-cloud/helper"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -232,7 +231,7 @@ func (r *IdentityResource) Create(ctx context.Context, req resource.CreateReques
 		return
 	}
 	data.Id = types.StringValue(result.IdentityId)
-	pubKeyPem, err := vaulthelper.NewBase64PublicPem(publicKey)
+	pubKeyPem, err := helper.NewBase64PublicPem(publicKey)
 	if err != nil {
 		resp.Diagnostics.AddError("error by create pem from public key", err.Error())
 		return
@@ -248,7 +247,7 @@ func (r *IdentityResource) Create(ctx context.Context, req resource.CreateReques
 
 	values, err := pAPI.GetAllRelatedValues(data.Id.ValueString())
 	if err != nil {
-		resp.Diagnostics.AddError("error by get all realted values for current creating identity", err.Error())
+		resp.Diagnostics.AddError("error by get all related values for current creating identity", err.Error())
 		return
 	}
 	for _, v := range values {
@@ -307,7 +306,7 @@ func (r *IdentityResource) Read(ctx context.Context, req resource.ReadRequest, r
 			resp.Diagnostics.AddError("Public key is not set... this schould not happen", "")
 			return
 		}
-		id, err := vaulthelper.Base64PublicPem(data.PublicKey.ValueString()).GetIdentityId(data.VaultID.ValueString())
+		id, err := helper.Base64PublicPem(data.PublicKey.ValueString()).GetIdentityId(data.VaultID.ValueString())
 		if err != nil {
 			resp.Diagnostics.AddError("unable to create id form public key", err.Error())
 			return
@@ -355,7 +354,7 @@ func (r *IdentityResource) Update(ctx context.Context, req resource.UpdateReques
 			resp.Diagnostics.AddError("Public key is not set... this schould not happen", "")
 			return
 		}
-		id, err := vaulthelper.Base64PublicPem(data.PublicKey.ValueString()).GetIdentityId(data.VaultID.ValueString())
+		id, err := helper.Base64PublicPem(data.PublicKey.ValueString()).GetIdentityId(data.VaultID.ValueString())
 		if err != nil {
 			resp.Diagnostics.AddError("unable to create id form public key", err.Error())
 			return
@@ -390,7 +389,7 @@ func (r *IdentityResource) Delete(ctx context.Context, req resource.DeleteReques
 			resp.Diagnostics.AddError("Public key is not set... this schould not happen", "")
 			return
 		}
-		id, err := vaulthelper.Base64PublicPem(data.PublicKey.ValueString()).GetIdentityId(data.VaultID.ValueString())
+		id, err := helper.Base64PublicPem(data.PublicKey.ValueString()).GetIdentityId(data.VaultID.ValueString())
 		if err != nil {
 			resp.Diagnostics.AddError("unable to create id form public key", err.Error())
 			return

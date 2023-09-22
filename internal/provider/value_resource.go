@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	client "github.com/fasibio/vaultapi"
+	client "github.com/cryptvault-cloud/api"
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"

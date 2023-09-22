@@ -1,14 +1,13 @@
-module git.fasibio.de/vault/terraform-provider-vault
+module github.com/cryptvault-cloud/terraform-provider-cryptvault
 
 go 1.20
 
 require (
-	github.com/fasibio/vaultapi v0.0.1
-	github.com/fasibio/vaulthelper v0.0.5
+	github.com/cryptvault-cloud/api v0.0.5
+	github.com/cryptvault-cloud/helper v0.0.9
 	github.com/hashicorp/terraform-plugin-docs v0.16.0
 	github.com/hashicorp/terraform-plugin-framework v1.3.5
 	github.com/hashicorp/terraform-plugin-framework-validators v0.12.0
-	github.com/hashicorp/terraform-plugin-go v0.18.0
 	github.com/hashicorp/terraform-plugin-log v0.9.0
 )
 
@@ -36,6 +35,7 @@ require (
 	github.com/hashicorp/hc-install v0.5.2 // indirect
 	github.com/hashicorp/terraform-exec v0.18.1 // indirect
 	github.com/hashicorp/terraform-json v0.17.1 // indirect
+	github.com/hashicorp/terraform-plugin-go v0.18.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.1 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/yamux v0.0.0-20181012175058-2f1d1f20f75d // indirect
@@ -66,7 +66,3 @@ require (
 	google.golang.org/grpc v1.56.1 // indirect
 	google.golang.org/protobuf v1.31.0 // indirect
 )
-
-// replace github.com/fasibio/vaultapi v0.0.0 => ../vaultapi
-
-//replace github.com/fasibio/vaulthelper v0.0.0 => ../vaulthelper

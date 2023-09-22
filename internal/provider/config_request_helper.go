@@ -3,8 +3,8 @@ package provider
 import (
 	"errors"
 
-	client "github.com/fasibio/vaultapi"
-	"github.com/fasibio/vaulthelper/helper"
+	client "github.com/cryptvault-cloud/api"
+	"github.com/cryptvault-cloud/helper"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"

@@ -8,7 +8,7 @@ import (
 	"flag"
 	"log"
 
-	"git.fasibio.de/vault/terraform-provider-vault/internal/provider"
+	"github.com/cryptvault-cloud/terraform-provider-cryptvault/internal/provider"
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
 )
 

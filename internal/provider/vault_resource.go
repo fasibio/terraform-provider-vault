@@ -8,9 +8,8 @@ import (
 	"fmt"
 	"time"
 
-	client "github.com/fasibio/vaultapi"
-	"github.com/fasibio/vaulthelper"
-	"github.com/fasibio/vaulthelper/helper"
+	client "github.com/cryptvault-cloud/api"
+	"github.com/cryptvault-cloud/helper"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
@@ -158,7 +157,7 @@ func (r *VaultResource) Create(ctx context.Context, req resource.CreateRequest, 
 	}
 
 	data.Id = types.StringValue(vaultid)
-	pubKey, err := vaulthelper.NewBase64PublicPem(publicKey)
+	pubKey, err := helper.NewBase64PublicPem(publicKey)
 
 	if err != nil {
 		resp.Diagnostics.AddError("Unable pack public key", err.Error())
