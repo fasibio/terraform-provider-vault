@@ -33,7 +33,7 @@ type VaultCloudProviderModel struct {
 }
 
 func (p *VaultCloud) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
-	resp.TypeName = "vault_cloud"
+	resp.TypeName = "cryptvault_cloud"
 	resp.Version = p.version
 }
 
@@ -59,7 +59,7 @@ func (p *VaultCloud) Configure(ctx context.Context, req provider.ConfigureReques
 
 	// Configuration values are now available.
 	if data.Endpoint.IsNull() {
-		data.Endpoint = basetypes.NewStringValue("http://localhost:8080/query")
+		data.Endpoint = basetypes.NewStringValue("https://api.cryptvault.cloud/query")
 	}
 
 	// Example client configuration for data sources and resources

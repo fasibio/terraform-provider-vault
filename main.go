@@ -38,7 +38,7 @@ func main() {
 	flag.Parse()
 
 	opts := providerserver.ServeOpts{
-		Address: "registry.terraform.io/fasibio/vault-terraform",
+		Address: "registry.terraform.io/cryptvault-cloud/terraform-provider-cryptvault",
 		Debug:   debug,
 	}
 
