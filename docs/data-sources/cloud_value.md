@@ -3,12 +3,12 @@
 page_title: "cryptvault_cloud_value Data Source - terraform-provider-cryptvault"
 subcategory: ""
 description: |-
-  Example data source
+  To Read an already exist resource from vault and encrypt them locally by given creator_key
 ---
 
 # cryptvault_cloud_value (Data Source)
 
-Example data source
+To Read an already exist resource from vault and encrypt them locally by given creator_key
 
 
 

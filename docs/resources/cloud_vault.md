@@ -3,12 +3,12 @@
 page_title: "cryptvault_cloud_vault Resource - terraform-provider-cryptvault"
 subcategory: ""
 description: |-
-  Example resource
+  Create a new Vault
 ---
 
 # cryptvault_cloud_vault (Resource)
 
-Example resource
+Create a new Vault
 
 
 

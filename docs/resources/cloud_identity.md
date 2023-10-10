@@ -3,12 +3,12 @@
 page_title: "cryptvault_cloud_identity Resource - terraform-provider-cryptvault"
 subcategory: ""
 description: |-
-  Example resource
+  Create a new Identity
 ---
 
 # cryptvault_cloud_identity (Resource)
 
-Example resource
+Create a new Identity
 
 
 

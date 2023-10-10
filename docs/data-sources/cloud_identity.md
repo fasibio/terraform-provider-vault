@@ -3,12 +3,12 @@
 page_title: "cryptvault_cloud_identity Data Source - terraform-provider-cryptvault"
 subcategory: ""
 description: |-
-  Example data source
+  Load and read an already exist identity over vaultId and identityPrivateKey
 ---
 
 # cryptvault_cloud_identity (Data Source)
 
-Example data source
+Load and read an already exist identity over vaultId and identityPrivateKey
 
 
 

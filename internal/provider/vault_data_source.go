@@ -33,7 +33,7 @@ func (d *VaultDataSource) Metadata(ctx context.Context, req datasource.MetadataR
 func (d *VaultDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		// This description is used by the documentation generator and the language server.
-		MarkdownDescription: "Example data source",
+		MarkdownDescription: "Load an exist Vault by Id (nothing happens here only hold vaultId locally, to better handle with other ressource and data)",
 
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{

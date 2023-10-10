@@ -3,12 +3,12 @@
 page_title: "cryptvault_cloud_value Resource - terraform-provider-cryptvault"
 subcategory: ""
 description: |-
-  Example resource
+  Create a new Value (Passwort) by give name and password
 ---
 
 # cryptvault_cloud_value (Resource)
 
-Example resource
+Create a new Value (Passwort) by give name and password
 
 
 

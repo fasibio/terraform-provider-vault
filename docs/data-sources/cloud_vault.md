@@ -3,12 +3,12 @@
 page_title: "cryptvault_cloud_vault Data Source - terraform-provider-cryptvault"
 subcategory: ""
 description: |-
-  Example data source
+  Load an exist Vault by Id (nothing happens here only hold vaultId locally, to better handle with other ressource and data)
 ---
 
 # cryptvault_cloud_vault (Data Source)
 
-Example data source
+Load an exist Vault by Id (nothing happens here only hold vaultId locally, to better handle with other ressource and data)
 
 
 
