@@ -63,7 +63,7 @@ func (r *ValueResource) Metadata(ctx context.Context, req resource.MetadataReque
 func (r *ValueResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		// This description is used by the documentation generator and the language server.
-		MarkdownDescription: "Example resource",
+		MarkdownDescription: "Create a new Value (Passwort) by give name and password",
 
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{

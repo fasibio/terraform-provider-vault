@@ -38,7 +38,7 @@ func (d *ValueDataSource) Metadata(ctx context.Context, req datasource.MetadataR
 func (d *ValueDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		// This description is used by the documentation generator and the language server.
-		MarkdownDescription: "Example data source",
+		MarkdownDescription: "To Read an already exist resource from vault and encrypt them locally by given creator_key ",
 
 		Attributes: map[string]schema.Attribute{
 			"id": schema.StringAttribute{
