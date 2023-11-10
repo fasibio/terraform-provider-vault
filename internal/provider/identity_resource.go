@@ -30,7 +30,7 @@ var _ resource.ResourceWithImportState = &IdentityResource{}
 var ValuePatternRegex *regexp.Regexp
 var ValuesPatternRegex *regexp.Regexp
 
-const ValuePatternRegexStr = `^\((?P<directions>(r|w|d)+)\)(?P<target>(VALUES|IDENTITY|SYSTEM))(?P<pattern>(\.[a-z0-9_\->\*]+)+)$`
+const ValuePatternRegexStr = `^\((?P<directions>(r|w|d)+)\)(?P<target>(VALUES|IDENTITY|SYSTEM))(?P<pattern>(\.([a-z0-9_\-]+|[>\*]{1}))+)$`
 const ValuesPatternRegexStr = `^(VALUES|IDENTITY|SYSTEM)(\.[a-z0-9_\-]+)+$`
 
 func init() {
