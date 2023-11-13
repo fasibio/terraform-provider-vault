@@ -3,8 +3,8 @@ module github.com/cryptvault-cloud/terraform-provider-cryptvault
 go 1.20
 
 require (
-	github.com/cryptvault-cloud/api v0.0.5
-	github.com/cryptvault-cloud/helper v0.0.10
+	github.com/cryptvault-cloud/api v0.0.6
+	github.com/cryptvault-cloud/helper v0.0.12
 	github.com/hashicorp/terraform-plugin-docs v0.16.0
 	github.com/hashicorp/terraform-plugin-framework v1.4.2
 	github.com/hashicorp/terraform-plugin-framework-validators v0.12.0

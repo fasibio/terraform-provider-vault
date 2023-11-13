@@ -36,7 +36,7 @@ Required:
 
 - `right_value_pattern` (String) Path to right point separated. 
 						
-Have to match /^\((?P<directions>(r|w|d)+)\)(?P<target>(VALUES|IDENTITY|SYSTEM))(?P<pattern>(\.([a-z0-9_\-]+|[>\*]{1}))+)$/
+Have to match /^\((?P<directions>(r|w|d)+)\)(?P<target>(VALUES|IDENTITY|SYSTEM))(?P<pattern>(\.([\w\-]+|[>\*]{1}))+)$/
 
 some examples: 
 	- (rwd)VALUES.foo.bar
