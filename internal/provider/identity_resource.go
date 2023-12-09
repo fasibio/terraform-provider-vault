@@ -248,7 +248,7 @@ func (r *IdentityResource) Create(ctx context.Context, req resource.CreateReques
 		return
 	}
 	for _, v := range values {
-		err := pAPI.SyncValue(v)
+		err := pAPI.SyncValue(v.Id)
 		if err != nil {
 			resp.Diagnostics.AddError(fmt.Sprintf("error by sync value %s for current creating identity", v), err.Error())
 		}
