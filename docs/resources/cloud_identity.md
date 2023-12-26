@@ -19,6 +19,7 @@ Create a new Identity
 
 - `creator_key` (String, Sensitive) Private key of identity with rights to create new identities
 - `name` (String) Name for the new Identity
+- `public_key` (String) Public key of identity
 - `rights` (Attributes List) Permissions for this new Identity (see [below for nested schema](#nestedatt--rights))
 - `vault_id` (String) Vault id
 
@@ -26,8 +27,6 @@ Create a new Identity
 
 - `id` (String) Identity id
 - `last_updated` (String)
-- `private_key` (String, Sensitive) Private key of identity
-- `public_key` (String) Public key of identity
 
 <a id="nestedatt--rights"></a>
 ### Nested Schema for `rights`

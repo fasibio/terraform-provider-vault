@@ -4,6 +4,8 @@ resource "cryptvault_cloud_value" "value1" {
   passframe   = "test"
   type        = "String"
   creator_key = cryptvault_cloud_identity.writer.private_key
+  depends_on  = [cryptvault_cloud_keypair.writer]
+
 }
 
 resource "cryptvault_cloud_value" "value2" {
@@ -12,6 +14,8 @@ resource "cryptvault_cloud_value" "value2" {
   passframe   = "1234AVT"
   type        = "String"
   creator_key = cryptvault_cloud_identity.writer.private_key
+  depends_on  = [cryptvault_cloud_keypair.writer]
+
 }
 
 

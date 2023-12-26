@@ -26,10 +26,10 @@ github.com/bwesterb/go-ristretto v1.2.0/go.mod h1:fUIoIZaG73pV5biE2Blr2xEzDoMj7N
 github.com/cloudflare/circl v1.1.0/go.mod h1:prBCrKB9DV4poKZY1l9zBXg2QJY7mvgRvtMxxK7fi4I=
 github.com/cloudflare/circl v1.3.3 h1:fE/Qz0QdIGqeWfnwq0RE0R7MI51s0M2E4Ga9kq5AEMs=
 github.com/cloudflare/circl v1.3.3/go.mod h1:5XYMA4rFBvNIrhs50XuiBJ15vF2pZn4nnUKZrLbUZFA=
-github.com/cryptvault-cloud/api v0.0.9 h1:nCY4RdQbTmPX/AYiapaaT3bb4EByP/bCGbn/kktmX7o=
-github.com/cryptvault-cloud/api v0.0.9/go.mod h1:ocKSg4tZk8SFcRlQyQhxBImRER1Ix6PQWNWh1jCZ1g0=
-github.com/cryptvault-cloud/helper v0.0.13 h1:ljdbcM0A83yx02zuqsBc23Vr161j+ni0VdOjwCnRNNA=
-github.com/cryptvault-cloud/helper v0.0.13/go.mod h1:HD3igDv0SkcgChPfp5THWFh2jWn/FnabeCa7KR7ewjU=
+github.com/cryptvault-cloud/api v0.1.0 h1:iVVpI9DmPKUMZOU71zZJUj+Tx8b5nSCcalsYMwTNG28=
+github.com/cryptvault-cloud/api v0.1.0/go.mod h1:ocKSg4tZk8SFcRlQyQhxBImRER1Ix6PQWNWh1jCZ1g0=
+github.com/cryptvault-cloud/helper v0.1.0 h1:xe5OjxyOpiQXvQVyWxRKubEpAXRPOyBWxMO3dTQmoZw=
+github.com/cryptvault-cloud/helper v0.1.0/go.mod h1:HD3igDv0SkcgChPfp5THWFh2jWn/FnabeCa7KR7ewjU=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

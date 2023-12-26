@@ -73,6 +73,7 @@ func (p *VaultCloud) Resources(ctx context.Context) []func() resource.Resource {
 		NewVaultResource,
 		NewIdentityResource,
 		NewValueResource,
+		NewKeyPairResource,
 	}
 }
 
@@ -81,6 +82,7 @@ func (p *VaultCloud) DataSources(ctx context.Context) []func() datasource.DataSo
 		NewVaultDataSource,
 		NewIdentityDataSource,
 		NewValueDataSource,
+		NewPublicKeyDataSource,
 	}
 }
 

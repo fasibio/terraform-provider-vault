@@ -12,7 +12,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 )
 
-var _ datasource.DataSource = &IdentityDataSource{}
+var _ datasource.DataSourceWithConfigure = &IdentityDataSource{}
 
 func NewIdentityDataSource() datasource.DataSource {
 	return &IdentityDataSource{}

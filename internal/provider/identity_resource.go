@@ -24,7 +24,6 @@ import (
 )
 
 // Ensure provider defined types fully satisfy framework interfaces.
-var _ resource.Resource = &IdentityResource{}
 var _ resource.ResourceWithImportState = &IdentityResource{}
 
 var ValuePatternRegex *regexp.Regexp
@@ -50,7 +49,6 @@ type IdentityResourceModel struct {
 	Name        types.String          `tfsdk:"name"`
 	LastUpdated types.String          `tfsdk:"last_updated"`
 	PublicKey   types.String          `tfsdk:"public_key"`
-	PrivateKey  types.String          `tfsdk:"private_key"`
 	VaultID     types.String          `tfsdk:"vault_id"`
 	CreatorKey  types.String          `tfsdk:"creator_key"`
 	Rights      []RightsResourceModel `tfsdk:"rights"`
@@ -86,15 +84,7 @@ func (r *IdentityResource) Schema(ctx context.Context, req resource.SchemaReques
 			},
 			"public_key": schema.StringAttribute{
 				MarkdownDescription: "Public key of identity",
-				Computed:            true,
-				PlanModifiers: []planmodifier.String{
-					stringplanmodifier.UseStateForUnknown(),
-				},
-			},
-			"private_key": schema.StringAttribute{
-				MarkdownDescription: "Private key of identity",
-				Computed:            true,
-				Sensitive:           true,
+				Required:            true,
 				PlanModifiers: []planmodifier.String{
 					stringplanmodifier.UseStateForUnknown(),
 				},
@@ -210,36 +200,24 @@ func (r *IdentityResource) Create(ctx context.Context, req resource.CreateReques
 		return
 	}
 
-	privateKey, publicKey, err := r.client.GetNewIdentityKeyPair()
-	if err != nil {
-		resp.Diagnostics.AddError("Error creating new KeyPair", err.Error())
-		return
-	}
-
 	rightInputs, err := getRightInputs(data.Rights)
 	if err != nil {
 		resp.Diagnostics.AddError("error by rights convert"+err.Error(), err.Error())
 		return
 	}
 
-	result, err := pAPI.AddIdentity(data.Name.ValueString(), publicKey, rightInputs)
+	pubKey, err := helper.GetPublicKeyFromB64String(data.PublicKey.ValueString())
+	if err != nil {
+		resp.Diagnostics.AddError("error convert key to edcsa.publickey: "+err.Error(), err.Error())
+		return
+	}
+
+	result, err := pAPI.AddIdentity(data.Name.ValueString(), pubKey, rightInputs)
 	if err != nil {
 		resp.Diagnostics.AddError("error by creating new indentity", err.Error())
 		return
 	}
 	data.Id = types.StringValue(result.IdentityId)
-	pubKeyPem, err := helper.NewBase64PublicPem(publicKey)
-	if err != nil {
-		resp.Diagnostics.AddError("error by create pem from public key", err.Error())
-		return
-	}
-	data.PublicKey = types.StringValue(string(pubKeyPem))
-	privKeyPem, err := helper.GetB64FromPrivateKey(privateKey)
-	if err != nil {
-		resp.Diagnostics.AddError("error by create pem from private key", err.Error())
-		return
-	}
-	data.PrivateKey = types.StringValue(privKeyPem)
 	data.LastUpdated = types.StringValue(time.Now().Format(time.RFC850))
 
 	values, err := pAPI.GetAllRelatedValues(data.Id.ValueString())
