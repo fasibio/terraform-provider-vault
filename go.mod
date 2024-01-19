@@ -3,7 +3,7 @@ module github.com/cryptvault-cloud/terraform-provider-cryptvault
 go 1.20
 
 require (
-	github.com/cryptvault-cloud/api v0.1.0
+	github.com/cryptvault-cloud/api v0.1.1
 	github.com/cryptvault-cloud/helper v0.1.0
 	github.com/hashicorp/terraform-plugin-docs v0.16.0
 	github.com/hashicorp/terraform-plugin-framework v1.5.0
@@ -56,7 +56,7 @@ require (
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/zclconf/go-cty v1.13.2 // indirect
-	golang.org/x/crypto v0.16.0 // indirect
+	golang.org/x/crypto v0.17.0 // indirect
 	golang.org/x/exp v0.0.0-20230905200255-921286631fa9 // indirect
 	golang.org/x/mod v0.12.0 // indirect
 	golang.org/x/net v0.17.0 // indirect
