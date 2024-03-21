@@ -26,7 +26,7 @@ func getClient(req *datasource.ConfigureRequest) (*client.Api, error) {
 	return client, nil
 }
 
-func getProtectedApi(api *client.Api, privateKey basetypes.StringValue, vaultID basetypes.StringValue) (*client.ProtectedApi, error) {
+func getProtectedApi(api *client.Api, privateKey basetypes.StringValue, vaultID basetypes.StringValue) (client.ProtectedApiHandler, error) {
 	if privateKey.IsNull() {
 		return nil, errors.New("private not allowed to be null")
 	}
