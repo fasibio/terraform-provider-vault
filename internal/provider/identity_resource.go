@@ -40,7 +40,7 @@ func NewIdentityResource() resource.Resource {
 
 // IdentityResource defines the resource implementation.
 type IdentityResource struct {
-	client *client.Api
+	client client.ApiHandler
 }
 
 // ExampleResourceModel describes the resource data model.

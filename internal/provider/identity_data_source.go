@@ -19,7 +19,7 @@ func NewIdentityDataSource() datasource.DataSource {
 }
 
 type IdentityDataSource struct {
-	client *client.Api
+	client client.ApiHandler
 }
 
 type IdentityDataSourceModel struct {

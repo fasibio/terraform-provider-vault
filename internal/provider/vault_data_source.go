@@ -18,7 +18,7 @@ func NewVaultDataSource() datasource.DataSource {
 }
 
 type VaultDataSource struct {
-	client *client.Api
+	client client.ApiHandler
 }
 
 type VaultDataSourceModel struct {

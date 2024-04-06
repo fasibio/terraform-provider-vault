@@ -64,8 +64,8 @@ func (p *VaultCloud) Configure(ctx context.Context, req provider.ConfigureReques
 
 	// Example client configuration for data sources and resources
 	client := client.NewApi(data.Endpoint.ValueString(), http.DefaultClient)
-	resp.DataSourceData = &client
-	resp.ResourceData = &client
+	resp.DataSourceData = client
+	resp.ResourceData = client
 }
 
 func (p *VaultCloud) Resources(ctx context.Context) []func() resource.Resource {

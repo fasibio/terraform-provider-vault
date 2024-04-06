@@ -42,7 +42,7 @@ func NewValueResource() resource.Resource {
 
 // ValueResource defines the resource implementation.
 type ValueResource struct {
-	client *client.Api
+	client client.ApiHandler
 }
 
 // ExampleResourceModel describes the resource data model.

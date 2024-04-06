@@ -29,7 +29,7 @@ func NewVaultResource() resource.Resource {
 
 // VaultResource defines the resource implementation.
 type VaultResource struct {
-	client *client.Api
+	client client.ApiHandler
 }
 
 // ExampleResourceModel describes the resource data model.
@@ -249,10 +249,8 @@ func (r *VaultResource) Update(ctx context.Context, req resource.UpdateRequest, 
 	}
 	vault, err := pApi.UpdateVault(data.Name.ValueString())
 	if err != nil {
-		if err != nil {
-			resp.Diagnostics.AddError("error by update vault", err.Error())
-			return
-		}
+		resp.Diagnostics.AddError("error by update vault", err.Error())
+		return
 	}
 
 	data.Name = types.StringValue(vault.Name)

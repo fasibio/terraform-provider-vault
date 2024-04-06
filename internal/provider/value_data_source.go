@@ -18,7 +18,7 @@ func NewValueDataSource() datasource.DataSource {
 }
 
 type ValueDataSource struct {
-	client *client.Api
+	client client.ApiHandler
 }
 
 type ValueDataSourceModel struct {

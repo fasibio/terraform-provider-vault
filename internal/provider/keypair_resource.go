@@ -18,7 +18,7 @@ import (
 var _ resource.Resource = &KeyPairResource{}
 
 type KeyPairResource struct {
-	client *client.Api
+	client client.ApiHandler
 }
 
 type KeyPairResourceModel struct {

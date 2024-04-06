@@ -10,23 +10,23 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
 )
 
-func getClientRessource(req *resource.ConfigureRequest) (*client.Api, error) {
-	client, ok := req.ProviderData.(*client.Api)
+func getClientRessource(req *resource.ConfigureRequest) (client.ApiHandler, error) {
+	client, ok := req.ProviderData.(client.ApiHandler)
+	if !ok {
+		return nil, errors.New("ProviderData is not client.ApiHandler")
+	}
+	return client, nil
+}
+
+func getClient(req *datasource.ConfigureRequest) (client.ApiHandler, error) {
+	client, ok := req.ProviderData.(client.ApiHandler)
 	if !ok {
 		return nil, errors.New("ProviderData is not *client.Api")
 	}
 	return client, nil
 }
 
-func getClient(req *datasource.ConfigureRequest) (*client.Api, error) {
-	client, ok := req.ProviderData.(*client.Api)
-	if !ok {
-		return nil, errors.New("ProviderData is not *client.Api")
-	}
-	return client, nil
-}
-
-func getProtectedApi(api *client.Api, privateKey basetypes.StringValue, vaultID basetypes.StringValue) (client.ProtectedApiHandler, error) {
+func getProtectedApi(api client.ApiHandler, privateKey basetypes.StringValue, vaultID basetypes.StringValue) (client.ProtectedApiHandler, error) {
 	if privateKey.IsNull() {
 		return nil, errors.New("private not allowed to be null")
 	}
